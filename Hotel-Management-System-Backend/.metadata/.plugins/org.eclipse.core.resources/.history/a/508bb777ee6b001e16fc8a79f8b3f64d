@@ -1,0 +1,31 @@
+package com.hms.reservation.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import com.hms.guest.entity.ErrorResponse;
+import com.hms.guest.exceptions.NoIdExistsException;
+
+@ControllerAdvice
+public class MainExceptionHandler {
+
+	@ExceptionHandler(RoomNotAvailableException.class)
+	public ResponseEntity<ErrorResponse> handleException(RoomNotAvailableException ex) {
+		ErrorResponse err = new ErrorResponse(ex.getMessage());
+
+		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+
+	}
+
+	@ExceptionHandler(NoIdExistsException.class)
+
+	public ResponseEntity<ErrorResponse> handleException(NoIdExistsException ex) {
+		ErrorResponse err = new ErrorResponse(ex.getMessage());
+
+		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+
+	}
+
+}

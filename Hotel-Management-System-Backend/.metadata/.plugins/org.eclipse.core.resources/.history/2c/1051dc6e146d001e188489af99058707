@@ -1,0 +1,7 @@
+server.port=9382
+spring.application.name=RoomService
+
+spring.data.mongodb.host=localhost
+spring.data.mongodb.port=27017
+spring.data.mongodb.database=roomdb
+#spring.data.mongodb.uri=mongodb://localhost:27017/roomdb

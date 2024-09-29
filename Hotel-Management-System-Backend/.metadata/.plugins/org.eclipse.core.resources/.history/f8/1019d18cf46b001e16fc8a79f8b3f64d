@@ -1,0 +1,52 @@
+package com.hms.reservation.entity;
+
+public class Room {
+	
+	private String ṛoomId;
+	private int roomNo;
+	private String roomType;
+	private int roomRent;
+	private String roomsAvailable;
+	public Room() {
+		super();
+	}
+	public Room(String ṛoomId, int roomNo, String roomType, int roomRent, String roomsAvailable) {
+		super();
+		this.ṛoomId = ṛoomId;
+		this.roomNo = roomNo;
+		this.roomType = roomType;
+		this.roomRent = roomRent;
+		this.roomsAvailable = roomsAvailable;
+	}
+	public String getṚoomId() {
+		return ṛoomId;
+	}
+	public void setṚoomId(String ṛoomId) {
+		this.ṛoomId = ṛoomId;
+	}
+	public int getRoomNo() {
+		return roomNo;
+	}
+	public void setRoomNo(int roomNo) {
+		this.roomNo = roomNo;
+	}
+	public String getRoomType() {
+		return roomType;
+	}
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+	public int getRoomRent() {
+		return roomRent;
+	}
+	public void setRoomRent(int roomRent) {
+		this.roomRent = roomRent;
+	}
+	public String getRoomsAvailable() {
+		return roomsAvailable;
+	}
+	public void setRoomsAvailable(String roomsAvailable) {
+		this.roomsAvailable = roomsAvailable;
+	}
+
+}

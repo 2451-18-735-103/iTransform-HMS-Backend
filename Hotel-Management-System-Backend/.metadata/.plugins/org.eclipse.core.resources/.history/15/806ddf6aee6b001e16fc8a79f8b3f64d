@@ -1,0 +1,21 @@
+package com.hms.reservation.service;
+
+import java.util.List;
+
+import com.hms.guest.exceptions.NoIdExistsException;
+import com.hms.reservation.entity.Reservation;
+import com.hms.reservation.exception.RoomNotAvailableException;
+
+public interface ReservationService {
+
+	public String addReservation(Reservation reservation) throws RoomNotAvailableException;
+
+	public String updateReservation(String reservationId, Reservation reservation);
+
+	public String deleteReservation(String reservationId);
+
+	public Reservation viewReservation(String reservationId) throws NoIdExistsException;
+
+	public List<Reservation> viewAllReservation();
+
+}

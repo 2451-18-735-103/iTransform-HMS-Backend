@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\KOTMANAS\Downloads\Authentication_Service (3)\Authentication_Service\Authentication_Service"/>
+			<item value="C:\Users\KOTMANAS\Downloads\studentRegistrationSystem (2)\studentRegistrationSystem"/>
+			<item value="C:\Users\KOTMANAS\Downloads\studentRegistrationSystem\studentRegistrationSystem"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\reservation-service"/>
+			<item value="C:\iTransformbackend\Hotel-Management-System-Backend\Reservation-service"/>
+			<item value="C:\iDigital\Flight-Booking-System\Payment"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\userAuthentication"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\staff-service"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\room-service"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\Reservation-service"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\payment-service"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\inventory-service"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\guest-service"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\API-Gateway"/>
+			<item value="C:\Users\KOTMANAS\Downloads\Hotel-Management-System-Backend\eureka-service"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Users\KOTMANAS\Downloads\studentRegistrationSystem\studentRegistrationSystem"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

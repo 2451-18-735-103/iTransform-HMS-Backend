@@ -1,0 +1,7 @@
+server.port=9900
+spring.application.name=api-service
+
+cloud:gateway:routes:-id:inventory
+uri:http://localhost:8081/
+predicates:-Path=/inventory/**
+

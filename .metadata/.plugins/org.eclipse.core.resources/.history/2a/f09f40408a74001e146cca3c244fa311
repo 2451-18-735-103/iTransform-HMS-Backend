@@ -1,0 +1,100 @@
+package com.cg.guestservice.service;
+
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import com.cg.guestservice.guestentity.Guest;
+import com.cg.guestservice.guestexception.GuestNotFoundException;
+import com.cg.guestservice.guestrepository.GuestRepository;
+
+@SpringBootTest
+public class GuestServiceTest {
+	@Autowired
+	private GuestService guestServiceImpl;
+
+	@MockBean
+	private GuestRepository guestRepository;
+
+	@Test
+	public void addTrainModel_test() {
+		Guest guest = new Guest("2","Manasa", "9381049498", "Manu2001@gmail.com", "female", "warangal");
+		when(guestRepository.save(guest)).thenReturn(guest);
+		System.out.println(guestServiceImpl.addGuest(guest) + "*****************************");
+		System.out.println(guest + "Error is there ******************************");
+		assertEquals(guest, guestServiceImpl.addGuest(guest));
+	}
+
+	@Test
+	public void addGuestModel_MissingFields() {
+		Guest guest = new Guest("","Manasa", "9381049498", "Manu2001@gmail.com", "female", "warangal");
+
+		
+		assertThrows(GuestNotFoundException.class, () -> {
+			guestServiceImpl.addGuest(guest);
+		});
+	}
+
+	@Test
+	public void getGuests_DataFound() {
+		List<Guest> guest = new ArrayList<>();
+
+
+
+		guest.add(new Guest("2","Manasa", "9381049498", "Manu2001@gmail.com", "female", "warangal"));
+		guest.add(new Guest("3", "Priya", "9381049498", "Priya@gmail.com", "female", "warangal"));
+
+		when(guestRepository.findAll()).thenReturn(guest);
+		assertEquals(2, guestServiceImpl. viewAllGuest().size());
+	}
+
+	@Test
+	public void getGuestByGuestId_DataFound() {
+		Guest t = new Guest("2","Manasa", "9381049498", "Manu2001@gmail.com", "female", "warangal");
+		when(guestRepository.findById("2")).thenReturn(Optional.of(t));
+		Optional<Guest> result = Optional.of(guestServiceImpl.viewGuestById("2"));
+		assertEquals(t, result.get());
+	}
+
+	@Test
+	public void getGuestByGuestId_DataNotFound() {
+	    when(guestRepository.findById("NotFound")).thenReturn(Optional.empty());
+	    
+	    // Call the service method and expect a TrainNotFoundException
+	    assertThrows(GuestNotFoundException.class, () -> {
+	        guestServiceImpl.viewGuestById("Guest NotFound");
+	    });
+	}
+
+
+	
+	@Test
+	public void deleteGuest_Exists() {
+	    Guest guest = new Guest("7","Naveen", "9381049498", "manu@gmail.com", "female", "warangal");
+
+	    when(guestRepository.findById("7")).thenReturn(Optional.of(guest));
+	    String result = guestServiceImpl.deleteGuest("7");
+	    assertEquals("Guest is deleted Successfully", result);
+	}
+
+	@Test
+	public void deleteGuest_NotExists() {
+
+          when(guestRepository.findById("7")).thenReturn(Optional.empty());
+
+	
+	    assertThrows(GuestNotFoundException.class, () -> {
+	        guestServiceImpl.deleteGuest("7");
+	    });
+	}
+}

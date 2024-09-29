@@ -1,0 +1,9 @@
+package com.payment.entity;
+
+import java.util.Date;
+@Document(collection="payment")
+public class Payment {
+	
+	
+    
+}

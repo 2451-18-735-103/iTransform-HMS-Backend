@@ -1,0 +1,8 @@
+package com.sau.userAuthentication.feignclient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name = "StaffService",url = "http://localhost:9381/staff/")
+public interface StaffClient {
+
+}

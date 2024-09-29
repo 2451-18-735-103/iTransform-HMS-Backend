@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\sukontha\Downloads\staff-service"/>
+			<item value="C:\Users\sukontha\Downloads\inventory-service"/>
+			<item value="C:\guest-service"/>
+			<item value="C:\Users\sukontha\Downloads\Reservation-service"/>
+			<item value="C:\Users\sukontha\Downloads\Hotel-Management-System-Backend\userAuthentication"/>
+			<item value="C:\Users\sukontha\Downloads\Hotel-Management-System-Backend\staff-service"/>
+			<item value="C:\Users\sukontha\Downloads\Hotel-Management-System-Backend\room-service"/>
+			<item value="C:\Users\sukontha\Downloads\main1\BackEnd\Api-Gateway"/>
+			<item value="C:\Users\sukontha\Downloads\Online-Railway-Reservation-main\Backend\userAuthentication"/>
+			<item value="C:\Users\sukontha\Downloads\room-service"/>
+			<item value="C:\Users\sukontha\Downloads\Flight-Booking-System\user-registration-microservice"/>
+			<item value="C:\Users\sukontha\Downloads\guest-service"/>
+			<item value="C:\Users\sukontha\Downloads\ONLINEHOTELMANAGEMENT\staff-service"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+</section>

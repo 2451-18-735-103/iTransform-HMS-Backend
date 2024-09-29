@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="InventoryTests" project="inventory-mangement" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.cg.hms.inventoryservice.InventoryTests" time="0.412" displayname="InventoryTests" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.inventoryservice.InventoryTests]">
+    <testcase name="ViewAllInventoryTest" classname="com.cg.hms.inventoryservice.InventoryTests" time="0.132" displayname="View all Inventory Test" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.inventoryservice.InventoryTests]/[method:ViewAllInventoryTest()]"/>
+    <testcase name="addInventoryTest" classname="com.cg.hms.inventoryservice.InventoryTests" time="0.036" displayname="Add Inventory Test" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.inventoryservice.InventoryTests]/[method:addInventoryTest()]"/>
+    <testcase name="updateInventoryTest" classname="com.cg.hms.inventoryservice.InventoryTests" time="0.208" displayname="Update Inventory Test" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.inventoryservice.InventoryTests]/[method:updateInventoryTest()]"/>
+    <testcase name="DeleteInventoryTest" classname="com.cg.hms.inventoryservice.InventoryTests" time="0.025" displayname="Delete Inventory Test" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.inventoryservice.InventoryTests]/[method:DeleteInventoryTest()]"/>
+  </testsuite>
+</testrun>

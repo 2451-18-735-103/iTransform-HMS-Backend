@@ -1,0 +1,49 @@
+package com.sau.userAuthentication.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sau.userAuthentication.feignclient.RoomClient;
+import com.sau.userAuthentication.models.Room;
+
+@RestController
+@RequestMapping("/manager")
+public class ManagerController {
+	
+	@Autowired
+	RoomClient roomClient;
+
+	@PostMapping("/addroom")
+	@PreAuthorize("hasAuthority('ROLE_MANAGER')")
+	public String addRoom(@RequestBody Room room) {
+		String addRoom = roomClient.addRoom(room);
+		return addRoom;
+	}
+	
+	@PutMapping("/updateroom/{id}")
+	public String updateRoom(@PathVariable String id, @RequestBody Room room) {
+		String updateRoom = roomClient.updateRoom(id, room);
+		return updateRoom;
+	}
+	
+	@DeleteMapping("/deleteroom/{id}")
+	public String deleteRoom(@PathVariable String id) {
+		String deleteRoom = roomClient.deleteRoom(id);
+		return deleteRoom;
+	}
+	
+	@GetMapping("/viewroombyid/{id}")
+	public Room viewRoom(@PathVariable String id) {
+		
+	}
+	
+	
+}

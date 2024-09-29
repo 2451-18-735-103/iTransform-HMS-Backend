@@ -1,0 +1,7 @@
+package com.sau.userAuthentication.models;
+
+public enum ERole {
+  OWNER,
+  MANAGER,
+  RECEPTIONIST
+}

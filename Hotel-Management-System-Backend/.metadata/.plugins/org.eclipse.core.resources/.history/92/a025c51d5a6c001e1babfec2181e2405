@@ -1,0 +1,103 @@
+package com.hms.reservation.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.hms.reservation.entity.Guest;
+import com.hms.reservation.exception.NoIdExistsException;
+import com.hms.reservation.entity.Reservation;
+import com.hms.reservation.entity.Room;
+import com.hms.reservation.exception.RoomNotAvailableException;
+import com.hms.reservation.repository.ReservationRepository;
+
+@Service
+public class ReservationServiceImpl implements ReservationService {
+
+	@Autowired
+	private ReservationRepository repo;
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@Override
+	public String addReservation(Reservation reservation) throws RoomNotAvailableException {
+		try {
+			Room room = restTemplate.getForObject("http://localhost:9382/room/viewroombyid/" + reservation.getRoomId(),
+					Room.class);
+
+			Guest guest = restTemplate.getForObject("http://localhost:9001/guest/" + reservation.getGuestId(),
+					Guest.class);
+
+			if (room.getRoomAvailable().equals("true")) {
+
+				repo.save(reservation);
+				room.setRoomAvailable("false");
+				restTemplate.put("http://localhost:9382/room/updateroom/" + reservation.getRoomId(), room);
+				return "Room number " + reservation.getRoomId() + " is booked for '" + guest.getGuestName() + "'";
+			} else {
+				throw new RoomNotAvailableException("Room is already filled");
+			}
+
+		} catch (Exception e) {
+			return "noGuest " + e;
+		}
+
+	}
+
+	@Override
+	public String updateReservation(String reservationId, Reservation reservation) {
+		Reservation id = repo.findByReservationId(reservationId);
+		if (id != null) {
+			id.setGuestId(reservation.getGuestId());
+			id.setRoomId(reservation.getRoomId());
+			id.setCheckInDate(id.getCheckInDate());
+			id.setCheckOutDate(reservation.getCheckOutDate());
+			id.setTotalPrice(reservation.getTotalPrice());
+			repo.save(id);
+			return "Reservation updated successfully";
+		}
+		return "The given id is not found";
+	}
+
+	@Override
+	public String deleteReservation(String reservationId) {
+		try {
+			Reservation id = repo.findByReservationId(reservationId);
+			System.out.println(id.getRoomId());
+
+			if (id != null) {
+
+				Room room = restTemplate.getForObject("http://localhost:9382/viewroom/" + id.getRoomId(), Room.class);
+				room.setRoomAvailable("true");
+				restTemplate.put("http://localhost:8081/updateroom/" + id.getRoomId(), room);
+				repo.delete(id);
+				return "Reservation deleted successfully";
+
+			}
+			return "The id is not found";
+		} catch (Exception ex) {
+			return "success" + ex;
+		}
+
+	}
+
+	@Override
+	public Reservation viewReservation(String reservationId) throws NoIdExistsException {
+		Reservation id = repo.findByReservationId(reservationId);
+		if (id != null) {
+			return id;
+		} else {
+			throw new NoIdExistsException("The id not present in the database");
+		}
+
+	}
+
+	@Override
+	public List<Reservation> viewAllReservation() {
+		return repo.findAll();
+	}
+
+}

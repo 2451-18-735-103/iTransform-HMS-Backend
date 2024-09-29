@@ -1,0 +1,18 @@
+package com.sau.userAuthentication.feignclient;
+
+import javax.validation.Valid;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.sau.userAuthentication.models.Staff;
+
+
+@FeignClient(name = "StaffService",url = "http://localhost:9381/staff")
+public interface StaffClient {
+	
+	@PostMapping("/addstaff")
+    public String addStaff(@RequestBody @Valid Staff staff);
+
+}

@@ -1,0 +1,8 @@
+package com.sau.userAuthentication.feignclient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name="RoomService",url = "http://localhost:9382/room")
+public interface RoomClient {
+
+}

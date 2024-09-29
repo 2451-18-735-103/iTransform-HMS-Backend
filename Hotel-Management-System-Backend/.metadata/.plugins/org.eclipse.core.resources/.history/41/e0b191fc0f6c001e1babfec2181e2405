@@ -1,0 +1,8 @@
+package com.sau.userAuthentication.feignclient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name = "GuestService",url = "http://localhost:9001/guest")
+public interface GuestClient {
+
+}

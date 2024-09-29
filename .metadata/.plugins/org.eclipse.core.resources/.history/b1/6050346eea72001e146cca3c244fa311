@@ -1,0 +1,39 @@
+package com.payment.entity;
+
+import java.util.Date;
+
+public class Payment {
+	
+	private double totalAmount;
+	private Date payTime;
+	private String creditCardDetails;
+	
+	
+	public Payment(double totalAmount, Date payTime, String creditCardDetails) {
+		
+		this.totalAmount = totalAmount;
+		this.payTime = payTime;
+		this.creditCardDetails = creditCardDetails;
+	}
+	
+	public double getTotalAmount() {
+		return totalAmount;
+	}
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+	public Date getPayTime() {
+		return payTime;
+	}
+	public void setPayTime(Date payTime) {
+		this.payTime = payTime;
+	}
+	public String getCreditCardDetails() {
+		return creditCardDetails;
+	}
+	public void setCreditCardDetails(String creditCardDetails) {
+		this.creditCardDetails = creditCardDetails;
+	}
+	
+    
+}

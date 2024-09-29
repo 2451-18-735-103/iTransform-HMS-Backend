@@ -1,0 +1,15 @@
+package com.sau.userAuthentication.feignclient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.sau.userAuthentication.models.Room;
+
+
+@FeignClient(name="RoomService",url = "http://localhost:9382/room")
+public interface RoomClient {
+
+	@PostMapping("/addroom")
+	public String addRoom(@RequestBody Room room);
+}

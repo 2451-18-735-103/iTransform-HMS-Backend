@@ -1,0 +1,44 @@
+package com.payment.controller;
+
+import org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.payment.entity.OrderRequest;
+import com.payment.entity.OrderResponse;
+import com.razorpay.Order;
+import com.razorpay.RazorpayClient;
+import com.razorpay.RazorpayException;
+
+@RestController
+@RequestMapping("/pg")
+public class PaymentController {
+  
+	private RazorpayClient client;
+	private static final String SECRET_ID1 = "rzp_test_6DsVNxfxrmdPP8";
+	private static final String SECRET_KEY1 = "uUPmHERLG1ab5rZDJwuJ2lBn";
+	private static final String SECRET_ID2 = "rzp_test_YA8ze8iJaiMVOz";
+	private static final String SECRET_KEY2 = "4KyCH2yMWEIyfTMH5VT7SDzf";
+	
+	
+	public OrderResponse createOrder(@RequestBody OrderRequest orderRequest) {
+		OrderResponse response = new OrderResponse();
+		try {
+			if(orderRequest.getAmount().intValue()>1000) {
+				client = new RazorpayClient(SECRET_ID1, SECRET_KEY1);
+			}
+			else {
+				client = new RazorpayClient(SECRET_ID2, SECRET_KEY2);
+			}
+			
+			Order order = createRazorPayOrder(orderRequest.getAmount());
+		}
+		catch(RazorpayException e) {
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+	
+}

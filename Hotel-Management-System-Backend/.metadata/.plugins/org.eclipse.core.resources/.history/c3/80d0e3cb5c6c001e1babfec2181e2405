@@ -1,0 +1,75 @@
+package com.hms.reservation.controller;
+
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.hms.reservation.entity.Reservation;
+import com.hms.reservation.exception.NoIdExistsException;
+import com.hms.reservation.exception.RoomNotAvailableException;
+import com.hms.reservation.service.ReservationServiceImpl;
+
+@RestController
+@RequestMapping("/reservation")
+public class ReservationController {
+	
+	@Autowired
+	private ReservationServiceImpl impl;
+	
+	private static Logger logger = LogManager.getLogger();
+	
+	@PostMapping("/addreservation")
+	public ResponseEntity<String> addReservation(@RequestBody Reservation reservation) throws RoomNotAvailableException {
+		logger.info("sendind request to add reservation");
+		String save = impl.addReservation(reservation);
+		logger.info("reservation added");
+		return new ResponseEntity<>(save,HttpStatus.OK) ;
+	}
+
+	@PutMapping("/updatereservation/{reservationId}")
+	public ResponseEntity<String> updateReservation(@PathVariable String reservationId,@RequestBody Reservation reservation) {
+		logger.info("sendind request to update reservation");
+		String save = impl.updateReservation(reservationId, reservation);
+		logger.info("reseavation updated");
+		return new ResponseEntity<String>(save, HttpStatus.OK);
+	}
+
+	
+	@DeleteMapping("/deletereservation/{reservationId}")
+	public ResponseEntity<String> deleteReservation(@PathVariable String reservationId) {
+		logger.info("sendind request to delete reservation");
+		String delete = impl.deleteReservation(reservationId);
+		logger.info("reservation deleted");
+		return new ResponseEntity<String>(delete, HttpStatus.OK);
+	}
+
+	@GetMapping("/viewreservation/{reservationId}")
+	public ResponseEntity<Reservation> viewReservation(@PathVariable String reservationId) throws NoIdExistsException {
+		logger.info("sendind request to view reservation");
+		Reservation view = impl.viewReservation(reservationId);
+		logger.info("viewing reservation from database");
+		return new ResponseEntity<Reservation>(view, HttpStatus.OK);
+	}
+
+	@GetMapping("/viewAllReservations")
+	public ResponseEntity<List<Reservation>> viewAllReservation() {
+		logger.info("sendind request to view reservation");
+		List<Reservation> all = impl.viewAllReservation();
+		logger.info("viewing all reservation from databse");
+		return new ResponseEntity<List<Reservation>>(all, HttpStatus.OK) ;
+	}
+
+}

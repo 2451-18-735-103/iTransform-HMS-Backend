@@ -1,0 +1,20 @@
+package com.sau.userAuthentication.feignclient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.sau.userAuthentication.models.Guest;
+
+
+
+@FeignClient(name = "GuestService",url = "http://localhost:9001/guest")
+public interface GuestClient {
+
+	@PostMapping("/add")
+	public Guest addGuestDetails(@RequestBody Guest guest);
+	
+	
+}

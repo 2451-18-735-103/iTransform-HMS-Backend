@@ -1,0 +1,42 @@
+package com.sau.userAuthentication.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sau.userAuthentication.feignclient.ReservationClient;
+import com.sau.userAuthentication.models.Reservation;
+
+@RestController
+public class ReceptionistController {
+	
+	@Autowired
+	ReservationClient reservationClient;
+	
+	@PostMapping("/addreservation")
+	public ResponseEntity<String> addReservation(@RequestBody Reservation reservation){
+		ResponseEntity<String> addReservation = reservationClient.addReservation(reservation);
+		return addReservation;
+	}
+	
+	@PutMapping("/updatereservation/{reservationId}")
+	public ResponseEntity<String> updateReservation(@PathVariable String reservationId,@RequestBody Reservation reservation){
+		ResponseEntity<String> updateReservation = reservationClient.updateReservation(reservationId, reservation);
+		return updateReservation;
+	}
+	
+	@DeleteMapping("/deletereservation/{reservationId}")
+	public ResponseEntity<String> deleteReservation(@PathVariable String reservationId){
+		ResponseEntity<String> deleteReservation = reservationClient.deleteReservation(reservationId);
+		return deleteReservation;
+	}
+	
+	
+	
+
+}

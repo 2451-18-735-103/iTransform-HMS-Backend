@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter"/>
+    <fullyQualifiedTypeName name="com.payment.entity.OrderResponse"/>
+    <fullyQualifiedTypeName name="java.math.BigInteger"/>
+    <fullyQualifiedTypeName name="com.razorpay.RazorpayClient"/>
+    <fullyQualifiedTypeName name="com.razorpay.RazorpayException"/>
+    <fullyQualifiedTypeName name="com.razorpay.Order"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.server.EnableEurekaServer"/>
+    <fullyQualifiedTypeName name="jakarta.annotation.PostConstruct"/>
+    <fullyQualifiedTypeName name="com.cg.loginservice.entity.Role"/>
+    <fullyQualifiedTypeName name="com.cg.loginservice.service.RoleService"/>
+    <fullyQualifiedTypeName name="org.springframework.data.mongodb.core.mapping.Document"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.ManyToMany"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.FetchType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.JoinTable"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
+    <fullyQualifiedTypeName name="org.springframework.data.annotation.Id"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.data.mongodb.repository.MongoRepository"/>
+    <fullyQualifiedTypeName name="com.cg.loginservice.entity.User"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="com.cg.loginservice.service.UserService"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="org.springframework.data.mongodb.core.mapping.DBRef"/>
+    <fullyQualifiedTypeName name="org.springframework.data.mongodb.repository.config.EnableMongoRepositories"/>
+    <fullyQualifiedTypeName name="com.cg.loginservice.dao.UserRepository"/>
+    <fullyQualifiedTypeName name="com.cg.loginservice.dao.RoleRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="javax.validation.constraints.NotBlank"/>
+    <fullyQualifiedTypeName name="javax.validation.constraints.Pattern"/>
+    <fullyQualifiedTypeName name="javax.validation.constraints.Email"/>
+    <fullyQualifiedTypeName name="javax.validation.Valid"/>
+    <fullyQualifiedTypeName name="com.sau.userAuthentication.models.Staff"/>
+    <fullyQualifiedTypeName name="com.sau.userAuthentication.feignclient.StaffClient"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.openfeign.FeignClient"/>
+    <fullyQualifiedTypeName name="com.sau.userAuthentication.feignclient.InventoryClient"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.sau.userAuthentication.models.Inventory"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.client.discovery.EnableDiscoveryClient"/>
+</qualifiedTypeNameHistroy>

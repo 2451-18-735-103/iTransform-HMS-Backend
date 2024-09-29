@@ -1,0 +1,17 @@
+server.port=9900
+spring.application.name=api-service
+
+#cloud:gateway:routes:-id:inventory
+#uri:http://localhost:8081/
+#predicates:-Path=/inventory/**
+
+# Gateway Routes Configuration
+spring.cloud.gateway.routes[0].id=inventory
+spring.cloud.gateway.routes[0].uri=http://localhost:8081
+spring.cloud.gateway.routes[0].predicates[0]=Path=/inventory/**
+#spring.cloud.gateway.routes[1].id=service2-route
+#spring.cloud.gateway.routes[1].uri=http://localhost:8082
+#spring.cloud.gateway.routes[1].predicates[0]=Path=/service2/**
+
+# Logging
+logging.level.org.springframework.cloud.gateway=DEBUG

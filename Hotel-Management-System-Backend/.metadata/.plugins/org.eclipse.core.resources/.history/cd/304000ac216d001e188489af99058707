@@ -1,0 +1,19 @@
+server.port=9900
+spring.application.name=api-service
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: FlightMngt-MicroService
+          uri: http://localhost:9001/
+          predicates:
+            - Path=/flight/**
+
+
+        - id: Booking-Service
+          uri: http://localhost:9050/
+          predicates:
+            - Path=/booking/**

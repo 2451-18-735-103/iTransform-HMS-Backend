@@ -1,0 +1,8 @@
+package com.sau.userAuthentication.controllers;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ReceptionistController {
+
+}

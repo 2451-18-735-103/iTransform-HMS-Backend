@@ -1,0 +1,5 @@
+package com.sau.userAuthentication.feignclient;
+
+public interface ReservationClient {
+
+}

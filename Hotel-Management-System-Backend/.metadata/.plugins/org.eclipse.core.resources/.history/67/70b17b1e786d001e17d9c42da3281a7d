@@ -1,0 +1,240 @@
+package com.hms.reservation.service;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.hms.reservation.entity.Guest;
+import com.hms.reservation.exception.GuestNotFoundException;
+import com.hms.reservation.exception.NoIdExistsException;
+import com.hms.reservation.entity.Reservation;
+import com.hms.reservation.entity.Room;
+import com.hms.reservation.exception.RoomNotAvailableException;
+import com.hms.reservation.exception.RoomNotFoundException;
+import com.hms.reservation.repository.ReservationRepository;
+
+@Service
+public class ReservationServiceImpl implements ReservationService {
+
+	@Autowired
+	private ReservationRepository repo;
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+//	@Override
+//	public String addReservation(Reservation reservation) throws RoomNotAvailableException {
+//		try {
+//			Room room = restTemplate.getForObject("http://localhost:9382/room/viewroombyid/" + reservation.getRoomId(),
+//					Room.class);
+//
+//			Guest guest = restTemplate.getForObject("http://localhost:9001/guest/" + reservation.getGuestId(),
+//					Guest.class);
+//
+//			if (room.getRoomAvailable().equals("true")) {
+//
+//				repo.save(reservation);
+//				room.setRoomAvailable("false");
+//				restTemplate.put("http://localhost:9382/room/updateroom/" + reservation.getRoomId(), room);
+//				return "Room number " + reservation.getRoomId() + " is booked for '" + guest.getGuestName()+ "'";
+//			} else {
+//				throw new RoomNotAvailableException("Room is already filled");
+//			}
+//
+//		} catch (Exception e) {
+//			return "noGuest " + e;
+//		}
+//
+//	}
+	@Override
+
+	public String addReservation(Reservation reservation) throws RoomNotAvailableException {
+
+	    try {
+
+	        Room room = restTemplate.getForObject("http://localhost:9382/room/viewroombyid/" + reservation.getRoomId(), Room.class);
+
+	        Guest guest = restTemplate.getForObject("http://localhost:9001/guest/" + reservation.getGuestId(), Guest.class);
+
+ 
+
+	        if (room.getRoomAvailable().equals("true")) {
+
+	            // Convert the check-in and check-out date strings to LocalDate objects
+
+	            LocalDate checkInDate = LocalDate.parse(reservation.getCheckInDate());
+
+	            LocalDate checkOutDate = LocalDate.parse(reservation.getCheckOutDate());
+
+ 
+
+	            // Calculate the number of days between check-in and check-out dates
+
+	            int numberOfDays = (int) ChronoUnit.DAYS.between(checkInDate, checkOutDate);
+
+ 
+
+	            // Retrieve the room rent from the Room object
+
+	            int roomRent = room.getRoomRent();
+
+ 
+
+	            // Calculate the total price
+
+	            int totalPrice = numberOfDays * roomRent;
+
+ 
+
+	            reservation.setTotalPrice(totalPrice); // Set the total price in the Reservation object
+
+ 
+
+	            repo.save(reservation);
+
+	            room.setRoomAvailable("false");
+
+	            restTemplate.put("http://localhost:9382/room/updateroom/" + reservation.getRoomId(), room);
+
+ 
+
+	            return "Room number " + reservation.getRoomId() + " is booked for '" + guest.getGuestName() + "'. Total price: $" + totalPrice;
+
+	        } else {
+
+	            throw new RoomNotAvailableException("Room is already filled");
+
+	        }
+
+	    } catch (Exception e) {
+
+	        return "noGuest " + e;
+
+	    }
+
+	}
+
+ 
+
+	
+
+	
+
+ 
+
+ 
+
+ 
+
+	
+
+	@Override
+
+	public String updateReservation(String reservationId, Reservation reservation) {
+
+	    Reservation existingReservation = repo.findByReservationId(reservationId);
+
+	    
+
+	    if (existingReservation != null) {
+
+	        // Retrieve the room details to get the room rent
+
+	        Room room = restTemplate.getForObject("http://localhost:9382/room/viewroombyid/" + reservation.getRoomId(), Room.class);
+
+	        
+
+	        if (room != null) {
+
+	            existingReservation.setGuestId(reservation.getGuestId());
+
+	            existingReservation.setRoomId(reservation.getRoomId());
+
+	            existingReservation.setCheckInDate(reservation.getCheckInDate());
+
+	            existingReservation.setCheckOutDate(reservation.getCheckOutDate());
+
+	            
+
+	            // Calculate the new total price based on the updated dates and room rent
+
+	            LocalDate checkInDate = LocalDate.parse(existingReservation.getCheckInDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+	            LocalDate checkOutDate = LocalDate.parse(existingReservation.getCheckOutDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+	            int numberOfDays = (int) ChronoUnit.DAYS.between(checkInDate, checkOutDate);
+
+	            int roomRent = room.getRoomRent();
+
+	            int totalPrice = numberOfDays * roomRent;
+
+	            existingReservation.setTotalPrice(totalPrice);
+
+	            
+
+	            repo.save(existingReservation);
+
+	            
+
+	            return "Reservation updated successfully. Total price updated to $" + totalPrice;
+
+	        } else {
+
+	            return "Failed to retrieve room details. Update aborted.";
+
+	        }
+
+	    }
+
+	    
+
+	    return "The given id is not found";
+
+	}
+
+	@Override
+	public String deleteReservation(String reservationId) {
+		try {
+			Reservation id = repo.findByReservationId(reservationId);
+			System.out.println(id.getRoomId());
+
+			if (id != null) {
+
+				Room room = restTemplate.getForObject("http://localhost:9382/viewroom/" + id.getRoomId(), Room.class);
+				room.setRoomAvailable("true");
+				restTemplate.put("http://localhost:8081/updateroom/" + id.getRoomId(), room);
+				repo.delete(id);
+				return "Reservation deleted successfully";
+
+			}
+			return "The id is not found";
+		} catch (Exception ex) {
+			return "success" + ex;
+		}
+
+	}
+
+	@Override
+	public Reservation viewReservation(String reservationId) throws NoIdExistsException {
+		Reservation id = repo.findByReservationId(reservationId);
+		if (id != null) {
+			return id;
+		} else {
+			throw new NoIdExistsException("The id not present in the database");
+		}
+
+	}
+
+	@Override
+	public List<Reservation> viewAllReservation() {
+		return repo.findAll();
+	}
+
+}

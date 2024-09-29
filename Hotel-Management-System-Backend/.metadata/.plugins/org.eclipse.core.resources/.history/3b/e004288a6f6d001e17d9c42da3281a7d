@@ -1,0 +1,5 @@
+package com.hms.reservation.exception;
+
+public class RoomNotFoundException extends Exception {
+
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="java (1)" project="staff-management" tests="14" started="14" failures="0" errors="0" ignored="0">
+  <testsuite name="com.cg.hms.service.StaffServiceTest" time="0.264" displayname="StaffServiceTest" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.service.StaffServiceTest]">
+    <testcase name="testAddStaffWithEmptyId" classname="com.cg.hms.service.StaffServiceTest" time="0.072" displayname="testAddStaffWithEmptyId()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.service.StaffServiceTest]/[method:testAddStaffWithEmptyId()]"/>
+    <testcase name="testDeleteStaff" classname="com.cg.hms.service.StaffServiceTest" time="0.104" displayname="testDeleteStaff()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.service.StaffServiceTest]/[method:testDeleteStaff()]"/>
+    <testcase name="testUpdateStaff" classname="com.cg.hms.service.StaffServiceTest" time="0.014" displayname="testUpdateStaff()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.service.StaffServiceTest]/[method:testUpdateStaff()]"/>
+    <testcase name="testDeleteStaffWithNonexistentId" classname="com.cg.hms.service.StaffServiceTest" time="0.013" displayname="testDeleteStaffWithNonexistentId()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.service.StaffServiceTest]/[method:testDeleteStaffWithNonexistentId()]"/>
+    <testcase name="testAddStaff" classname="com.cg.hms.service.StaffServiceTest" time="0.012" displayname="testAddStaff()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.service.StaffServiceTest]/[method:testAddStaff()]"/>
+    <testcase name="testViewAllStaffEmptyList" classname="com.cg.hms.service.StaffServiceTest" time="0.013" displayname="testViewAllStaffEmptyList()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.service.StaffServiceTest]/[method:testViewAllStaffEmptyList()]"/>
+    <testcase name="testUpdateStaffNotFound" classname="com.cg.hms.service.StaffServiceTest" time="0.014" displayname="testUpdateStaffNotFound()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.service.StaffServiceTest]/[method:testUpdateStaffNotFound()]"/>
+  </testsuite>
+  <testsuite name="com.cg.hms.StaffServiceApplicationTests" time="0.011" displayname="StaffServiceApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.StaffServiceApplicationTests]">
+    <testcase name="contextLoads" classname="com.cg.hms.StaffServiceApplicationTests" time="0.011" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.StaffServiceApplicationTests]/[method:contextLoads()]"/>
+  </testsuite>
+  <testsuite name="com.cg.hms.controller.StaffControllerTest" time="0.054" displayname="StaffControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.controller.StaffControllerTest]">
+    <testcase name="testDeleteStaff" classname="com.cg.hms.controller.StaffControllerTest" time="0.011" displayname="testDeleteStaff()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.controller.StaffControllerTest]/[method:testDeleteStaff()]"/>
+    <testcase name="testViewAllStaff" classname="com.cg.hms.controller.StaffControllerTest" time="0.011" displayname="testViewAllStaff()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.controller.StaffControllerTest]/[method:testViewAllStaff()]"/>
+    <testcase name="testUpdateStaff" classname="com.cg.hms.controller.StaffControllerTest" time="0.008" displayname="testUpdateStaff()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.controller.StaffControllerTest]/[method:testUpdateStaff()]"/>
+    <testcase name="testAddStaff" classname="com.cg.hms.controller.StaffControllerTest" time="0.008" displayname="testAddStaff()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.controller.StaffControllerTest]/[method:testAddStaff()]"/>
+  </testsuite>
+  <testsuite name="com.cg.hms.repository.StaffRepositoryTest" time="0.018" displayname="StaffRepositoryTest" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.repository.StaffRepositoryTest]">
+    <testcase name="testFindAll" classname="com.cg.hms.repository.StaffRepositoryTest" time="0.007" displayname="testFindAll()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.repository.StaffRepositoryTest]/[method:testFindAll()]"/>
+    <testcase name="testFindStaffById" classname="com.cg.hms.repository.StaffRepositoryTest" time="0.008" displayname="testFindStaffById()" uniqueid="[engine:junit-jupiter]/[class:com.cg.hms.repository.StaffRepositoryTest]/[method:testFindStaffById()]"/>
+  </testsuite>
+</testrun>
